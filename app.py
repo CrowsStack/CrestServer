@@ -9,7 +9,7 @@ import logging
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})  # Update origins in production
+CORS(app, resources={r"/api/*": {"origins": ["https://hon-wilderness-antonio-framing.trycloudflare.com", "https://medicare-accident-comics-naked.trycloudflare.com"]}})
 
 # Configure logging
 logging.basicConfig(level=logging.ERROR, filename='error.log')
@@ -27,10 +27,10 @@ def receive_contact_form():
 
     load_dotenv()  # Load environment variables
 
-    # Email credentials
-    email_sender = os.getenv('EMAIL_SENDER')  # Gmail address
-    email_password = os.getenv('EMAIL_PASSWORD')  # Gmail app password
-    email_receiver = os.getenv('EMAIL_RECEIVER')  # Recipient's email
+    # Email credentials from environment variables
+    email_sender = os.getenv("EMAIL_SENDER")  # Gmail address
+    email_password = os.getenv("EMAIL_PASSWORD")  # Gmail app password
+    email_receiver = os.getenv("EMAIL_RECEIVER")  # Recipient's email
 
     # Ensure credentials are set
     if not (email_sender and email_password and email_receiver):
@@ -78,4 +78,11 @@ def receive_contact_form():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Run the Flask app
+    host = os.getenv("HOST", "0.0.0.0")  # Default host
+    port = int(os.getenv("PORT", 5000))   # Default port
+
+    # Print the IP address and port
+    print(f"Flask app is running on: http://{host}:{port}")
+
+    app.run(host=host, port=port, debug=True)
