@@ -79,7 +79,7 @@ def receive_contact_form():
 
 if __name__ == "__main__":
     # Run the Flask app
-    host = os.getenv("HOST", "0.0.0.0")  # Default host
+    host = os.getenv("HOST", "10.2.189.1")  # Default host
     port = int(os.getenv("PORT", 5000))   # Default port
 
     # Print the IP address and port
