@@ -9,7 +9,7 @@ import logging
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": ["https://altered-kelly-calendar-connections.trycloudflare.com", "https://medicare-accident-comics-naked.trycloudflare.com"]}})
+CORS(app, resources={r"/api/*": {"origins": ["https://altered-kelly-calendar-connections.trycloudflare.com/contact"]}})
 
 # Configure logging
 logging.basicConfig(level=logging.ERROR, filename='error.log')
